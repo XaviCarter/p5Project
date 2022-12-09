@@ -1,11 +1,33 @@
+var fillValue = '#F9F108';
+var circleX, circleY, circleRad;
+var openDoor = false;
+
 function setup() {
     var canvas = createCanvas(1600, 1200);
     canvas.parent("p5container");
+
+    initCircle();
     
 }
 
 function draw() {
     background('#F9F108');
+
+    if(mouseX > (circleX - circleRad/2)
+      && mouseX < (circleX + circleRad/2)
+      && mouseY > (circleY - circleRad/2)
+      && mouseY < (circleY + circleRad/2)
+    ) {
+        fillValue = '#BCC004';
+    } else {
+        fillValue = '#F9F108';
+    }
+
+    
+
+    if(openDoor==true) {
+        
+    }
 
     //outline
     fill('#F9F108');
@@ -38,9 +60,34 @@ function draw() {
 
     fill(0, 0, 0);
     ellipse(800,600, 60);
-
-    fill('#F9F108');
-    ellipse(800, 600, 50);
     
+    fill(fillValue);
+    stroke(0);
+    strokeWeight(6);
+    ellipse(width/2,height/2,50);
+}
 
+function initCircle() {
+    circleX = width/2;
+    circleY = height/2;
+    circleRad = 50;
+}
+
+function mousePressed() {
+    if(mouseX > (circleX - circleRad/2)
+    && mouseX < (circleX + circleRad/2) 
+    && mouseY > (circleY - circleRad/2) 
+    && mouseY < (circleY + circleRad/2) 
+
+    ) {
+   drawText = true; 
+  }  else {
+   drawText = false; 
+  }
+
+}
+
+function resetText(){
+
+drawText = false; 
 }
